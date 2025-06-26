@@ -1,0 +1,8 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    &__input {
+        height: 50px;
+        width: 300px;
+    }
+}
