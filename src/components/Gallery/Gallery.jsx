@@ -1,15 +1,17 @@
 import '../../styles/Gallery.scss'
 import ItemGallery from './ItemGallery';
+import {Link} from 'react-router';
 
 
-function Gallery ({hpList}){
+function Gallery ({hpList, searchName}){
 
     return (
         <ul className="list">
-           { hpList.map(item => 
-           <ItemGallery item={item} key={item.id}/>
-
-           )}
+           { hpList.length !== 0 ? hpList.map(item => 
+                <Link to={"/detail/" + item.id} key={item.id}>
+                    <ItemGallery item={item}/>
+                </Link>
+           ) : 'Noy hay personajes que coincidan con la búsqueda "' +  searchName + '".' }
             
         </ul>
     ); 

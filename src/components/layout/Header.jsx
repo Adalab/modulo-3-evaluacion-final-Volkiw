@@ -1,10 +1,14 @@
 
+import '../../styles/Header.scss';
+
 function Header (){
 
     return (
-        <>
-        <h1>Buscador de personajes</h1>
-        </>
+        
+        <section className="header">
+            <img className="header__logo" src="src/images/hp-logo.png" />
+        </section>
+        
     ); 
 }
 

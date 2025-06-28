@@ -1,10 +1,16 @@
 .search {
     display: flex;
     flex-direction: row;
+    margin: auto;
     margin-top: 50px;
+    max-width: 700px;
     &__input {
         height: 40px;
         width: 300px;
         margin: auto;
+        border: none;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 3px;
+        padding: 5px;
     }
 }

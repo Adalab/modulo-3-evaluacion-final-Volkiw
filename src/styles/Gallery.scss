@@ -8,13 +8,24 @@
     justify-content: space-around;
     padding: 50px 0;
 
-    &__image {
+    &__container {
         width: 230px;
         height: 300px;
         background-position: center center;
         background-size: cover;
         display: flex;
-        align-items: end;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 4px;
+       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+       
+    }
+
+    &__house {
+        width: 35px; 
+        margin: 10px 0 0 185px;
+
+
     }
 
     &__info {
@@ -24,6 +35,72 @@
         border-radius: 5px;
         background-color: rgba(255,255,255, 0.9);
         color: #343434;
+    }
+}
+
+.card-link {
+    text-align: left;
+    width: 600px;
+    display: inline-block;
+    color: #8a3d3d;
+    margin-top: 50px;
+    &:hover{
+        color:#343434;
+    }
+    &__span {
+        font-size: 1.3rem;
+    }
+
+}
+
+.card {
+    width: 600px;
+    height: 420px;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 10px auto 30px auto;
+    background-color: #ffffff;
+
+    &__image {
+        width: 300px;
+        height: 100%;
+        border-radius: 5px 0 0 5px;
+        object-fit:cover;
 
     }
+    &__left-column {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+    &__house {
+        height: 150px;
+        margin: 20px auto 0px auto;
+
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        border-bottom: 1px solid rgb(187, 125, 125);
+        padding-bottom: 5px;
+    }
+
+    &__info{
+        padding: 10px;
+        width: 90%;
+        margin: 5%;
+        color: #343434;
+        text-align: left;
+    }
+    &__info--01 {
+        padding: 3px 0 7px 0;
+        font-style: italic;
+        color: #5d5d5d;
+
+    }
+
 }

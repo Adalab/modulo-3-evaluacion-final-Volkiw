@@ -3,7 +3,9 @@ import './styles/App.scss';
 import Head from './components/layout/Header';
 import Search from './components/Filters/Search';
 import Gallery from './components/Gallery/Gallery';
+import Card from './components/Gallery/Card';
 import { useState, useEffect } from 'react'; //Hooks
+import { Routes, Route } from 'react-router';
 
 function App() {
   const [hpList, setHpList] = useState([]);
@@ -28,8 +30,22 @@ const houses = [... new Set(hpList.flatMap(item => item.house ? item.house : [])
   return(
     <>
       <Head />
-      <Search setSearchName={setSearchName} searchName={searchName} houses={houses} searchHouse={searchHouse} setSearchHouse={setSearchHouse} />
-      <Gallery hpList={filteredList} />
+      
+
+      <Routes>
+        <Route path="/" index element={ 
+          <>
+            <Search setSearchName={setSearchName} searchName={searchName} houses={houses} searchHouse={searchHouse} setSearchHouse={setSearchHouse} />
+            <Gallery hpList={filteredList} searchName={searchName} /> 
+          </>
+      }/>
+
+        <Route path="/detail/:id" element={ 
+          <Card hpList={hpList} /> 
+      }/>
+
+        <Route path="*" element={ <h1>Ruta no encontrada</h1> }/>
+      </Routes>
 
     </>
   )
