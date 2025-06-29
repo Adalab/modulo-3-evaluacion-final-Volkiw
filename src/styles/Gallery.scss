@@ -8,6 +8,15 @@
     justify-content: space-around;
     padding: 50px 0;
 
+    &__item {
+        transition: transform 330ms ease-in-out;
+    }
+    &__item:hover {
+        transform: scale(1.03);
+        box-shadow: rgba(255, 200, 3, 0.5) 4px 5px 15px;
+
+    }
+
     &__container {
         width: 230px;
         height: 300px;

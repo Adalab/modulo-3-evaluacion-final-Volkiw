@@ -1,16 +1,24 @@
+import useCharacters from '../../hooks/useCharacters';
 import '../../styles/Gallery.scss';
 import { useParams } from "react-router";
 import {Link} from 'react-router';
 
 
-function Card ({hpList}){
-    const {id} = useParams();
-    const character = hpList.find(item => item.id === id );
+function Card (){
 
+    const list = useCharacters();
+
+    const {id} = useParams();
+       
+    if (list.length === 0) return "";
+    
+    const character = list.find(item => item.id === id);
+    
+    if (!character) return <div> <Link to="/" className="card-link"> volver atrás <span className="card-link__span">🧹</span></Link><p>Personaje no encontrado, comprueba que la url sea la correcta.</p></div>;
 
     return (
      <>
-        <Link to="/" className="card-link"> volver atrás <span className="card-link__span">🧹</span></Link>
+         <Link to="/" className="card-link"> volver atrás <span className="card-link__span">🧹</span></Link>
         <div className="card">
                 <img className="card__image" src={ character.image ? character.image : "src/images/no-image.jpg"} />
 
@@ -25,12 +33,12 @@ function Card ({hpList}){
                     
                         <p><strong>Ancestry:</strong> {character.ancestry}</p>
 
-                         <p><strong>Wand:</strong> {character.wand.wood} {character.wand.core}</p>
+                         <p><strong>Wand: </strong> {character.wand.wood ? "wood of " + character.wand.wood : ""} {character.wand.core ? " and core of " + character.wand.core : ""} {character.wand.length ? character.wand.length + " length wand." : ""}</p>
 
                         <p><strong>Other names:</strong> {character.alternate_names.length !== 0 ? character.alternate_names.map( (item, index) => <span  key={index}> {item}, </span>) : "none"} {character.alternate_names.length !== 0 ? " etc." : null}</p>
                     </div>
                 </div>
-         </div>
+         </div> 
      </>
     ); 
 }

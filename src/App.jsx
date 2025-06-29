@@ -1,4 +1,5 @@
 
+import useCharacters from './hooks/useCharacters';
 import './styles/App.scss';
 import Head from './components/layout/Header';
 import Search from './components/Filters/Search';
@@ -8,21 +9,22 @@ import { useState, useEffect } from 'react'; //Hooks
 import { Routes, Route } from 'react-router';
 
 function App() {
-  const [hpList, setHpList] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [searchHouse, setSearchHouse] = useState("");
+  const [searchRole, setSearchRole] = useState("");
+  const hpList = useCharacters();
 
-
-
-  useEffect(()=>{
-      fetch('https://hp-api.onrender.com/api/characters')
-        .then(response => response.json())
-        .then(data => {
-        setHpList(data);
-      })
-  }, []);
   
-const filteredList = hpList.filter(item => item.name.toLowerCase().includes(searchName.toLowerCase())).filter(item => item.house === searchHouse || searchHouse === "");
+const filteredList = hpList
+.filter(item => item.name.toLowerCase().includes(searchName.toLowerCase()) || item.alternate_names.length > 0 && item.alternate_names[0].toLowerCase().includes(searchName.toLowerCase())
+)
+.filter(item => item.house === searchHouse || searchHouse === "")
+
+.filter(item => {
+  if (searchRole === "student") return item.hogwartsStudent === true;
+  if (searchRole === "staff") return item.hogwartsStaff === true;
+  if (searchRole === "") return true;
+} );
 
 const houses = [... new Set(hpList.flatMap(item => item.house ? item.house : []))];
 
@@ -35,13 +37,13 @@ const houses = [... new Set(hpList.flatMap(item => item.house ? item.house : [])
       <Routes>
         <Route path="/" index element={ 
           <>
-            <Search setSearchName={setSearchName} searchName={searchName} houses={houses} searchHouse={searchHouse} setSearchHouse={setSearchHouse} />
+            <Search setSearchName={setSearchName} searchName={searchName} houses={houses} searchHouse={searchHouse} setSearchHouse={setSearchHouse} setSearchRole={setSearchRole} searchRole={searchRole} />
             <Gallery hpList={filteredList} searchName={searchName} /> 
           </>
       }/>
 
         <Route path="/detail/:id" element={ 
-          <Card hpList={hpList} /> 
+          <Card /> 
       }/>
 
         <Route path="*" element={ <h1>Ruta no encontrada</h1> }/>

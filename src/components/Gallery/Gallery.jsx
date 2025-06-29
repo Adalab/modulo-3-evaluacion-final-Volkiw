@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 
 
 function Gallery ({hpList, searchName}){
+    if (hpList.length === 0 && searchName === "") return "";
 
     return (
         <ul className="list">
