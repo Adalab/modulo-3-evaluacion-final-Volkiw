@@ -11,6 +11,8 @@ Para curiosear la web creada con React y cómo se ha creado dejo algunas pistas:
 
 ## ¿Qué puedes hacer en la web?
 
+Para empezar, puedes visitarla aquí: https://beta.adalab.es/modulo-3-evaluacion-final-Volkiw/
+
 Puedes buscar personajes por nombre, su apodo, casa o si es un estudiante o staff de la escuela.
 
 También puedes entrar a conocer más detalles sobre cada personaje y puedes también ver una a una cada carta de personaje.
