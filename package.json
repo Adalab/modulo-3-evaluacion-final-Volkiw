@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "./",
+  "homepage": "https://beta.adalab.es/modulo-3-evaluacion-final-Volkiw",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
