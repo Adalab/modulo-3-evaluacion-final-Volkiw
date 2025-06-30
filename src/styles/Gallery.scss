@@ -33,8 +33,6 @@
     &__house {
         width: 35px; 
         margin: 10px 0 0 185px;
-
-
     }
 
     &__info {
@@ -52,7 +50,7 @@
     width: 600px;
     display: inline-block;
     color: #8a3d3d;
-    margin-top: 50px;
+    margin-top: 30px;
     &:hover{
         color:#343434;
     }
@@ -71,7 +69,7 @@
     justify-content: space-between;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 10px auto 30px auto;
+    margin: 10px auto 20px auto;
     background-color: #ffffff;
 
     &__image {
@@ -89,7 +87,6 @@
     &__house {
         height: 150px;
         margin: 20px auto 0px auto;
-
     }
 
     &__title {
@@ -112,4 +109,13 @@
 
     }
 
+    &__arrows {
+        color: #8a3d3d;
+    }
+
+    &__arrows:hover {
+        color: #b56363;
+    }
+
 }
+

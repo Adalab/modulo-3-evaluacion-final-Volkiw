@@ -7,18 +7,43 @@ import {Link} from 'react-router';
 function Card (){
 
     const list = useCharacters();
-
     const {id} = useParams();
+
+    let indexMinusId = "";
+    let indexMaxId = "";
        
     if (list.length === 0) return "";
     
     const character = list.find(item => item.id === id);
     
-    if (!character) return <div> <Link to="/" className="card-link"> volver atrás <span className="card-link__span">🧹</span></Link><p>Personaje no encontrado, comprueba que la url sea la correcta.</p></div>;
+    if (!character) return <div> <Link to="/" className="card-link"> back <span className="card-link__span">🧹</span></Link><p>Character not found, check that the URL is correct.</p> <img className="img--404" src="src/images/not-found.png" /></div>;
+
+
+    // para poder navegar por las tarjetas de personajes sin tener que volver a la galería: 
+
+    const index = list.indexOf(character);
+    const lastIndex = list.length - 1;
+
+    if (index !== 0) {
+        indexMinusId = list[index - 1].id;
+    }  
+    
+    if (list[index + 1] !== undefined) {
+        indexMaxId = list[index + 1].id;
+    }
+
+    if (index === 0) {
+       const lastIndexContent = list[lastIndex];
+       indexMinusId = lastIndexContent.id;
+    }
+
+    if (index === lastIndex) {
+        indexMaxId = list[0].id;
+    }
 
     return (
      <>
-         <Link to="/" className="card-link"> volver atrás <span className="card-link__span">🧹</span></Link>
+         <Link to="/" className="card-link"> back <span className="card-link__span">🧹</span></Link>
         <div className="card">
                 <img className="card__image" src={ character.image ? character.image : "src/images/no-image.jpg"} />
 
@@ -39,6 +64,10 @@ function Card (){
                     </div>
                 </div>
          </div> 
+         <div>
+            <Link className="card__arrows" to={"/detail/" + indexMinusId}> ◀ </Link>
+            <Link className="card__arrows" to={"/detail/" + indexMaxId}> ▶ </Link> 
+         </div>
      </>
     ); 
 }

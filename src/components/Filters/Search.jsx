@@ -3,23 +3,25 @@ import '../../styles/Filters.scss'
 
 function Search ({setSearchName, searchName, houses, searchHouse, setSearchHouse, searchRole, setSearchRole}){
 
-    const handleName = (ev) => {
+    const handleSubmit = (ev) => {
         ev.preventDefault();
+    }
+
+    const handleName = (ev) => {
         setSearchName(ev.target.value);
     };
 
     const handleHouse = (ev) => {
-        ev.preventDefault();
         setSearchHouse(ev.target.value);
     };
 
     const handleRole = (ev) => {
-        ev.preventDefault();
         setSearchRole(ev.target.value);
 
     };
 
-    const handleReset = () => {
+    const handleReset = (ev) => {
+        ev.preventDefault();
         setSearchName("");
         setSearchHouse("");
         setSearchRole("");
@@ -27,7 +29,7 @@ function Search ({setSearchName, searchName, houses, searchHouse, setSearchHouse
 
     return (
      <>
-        <form  className="search">
+        <form onSubmit={handleSubmit} className="search">
             <input className="search__input" value={searchName} placeholder="Write the name here..." onChange={handleName} />
             
             <select className="search__input"  onChange={handleHouse} value={searchHouse}>
@@ -43,7 +45,7 @@ function Search ({setSearchName, searchName, houses, searchHouse, setSearchHouse
                 <option defaultValue value="staff">Staff</option>
             </select>
 
-            <button onClick={handleReset}>reset</button>
+            <button type="button" onClick={handleReset}>reset</button>
         </form>
 
      </>

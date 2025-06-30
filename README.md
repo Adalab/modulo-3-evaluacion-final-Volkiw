@@ -1,12 +1,20 @@
-# React + Vite
+# Harry Potter Characters 🧙
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En esta página encontarás un repositorio de personajes de la saga de Harry Potter.
 
-Currently, two official plugins are available:
+Para curiosear la web creada con React y cómo se ha creado dejo algunas pistas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Prácticamente todo pasa por `App` y en `/componentes` encontraremos las distintas partes visuales e interactivas de la web.
+- También he creado la carpeta `/hook` donde encontraremos el _fetch_ de llamada a la api de personajes y así poder usarlo desde distintos componentes y que las disntas url sean compartibles sin necesidad de haber pasado por `App`.
+- Dentro de `/componentes`encontraremos subdiretorios: `/filters` para el formulario, `/gallery` para la visualización de los personajes y `/layout` para partes inicialmente no interactivas como la cabecera.
+- En `/styles` encontramos los estilos hechos con _Sass_.
 
-## Expanding the ESLint configuration
+## ¿Qué puedes hacer en la web?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Puedes buscar personajes por nombre, su apodo, casa o si es un estudiante o staff de la escuela.
+
+También puedes entrar a conocer más detalles sobre cada personaje y puedes también ver una a una cada carta de personaje.
+
+Si te gustan, puedes compartir la web pero también puedes compartir la carta de un personaje concreto.
+
+> **Disclaimer:** esta web no apoya a J. K. Rowling ni ningún tipo de discurso transexcluyente.

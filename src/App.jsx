@@ -5,7 +5,7 @@ import Head from './components/layout/Header';
 import Search from './components/Filters/Search';
 import Gallery from './components/Gallery/Gallery';
 import Card from './components/Gallery/Card';
-import { useState, useEffect } from 'react'; //Hooks
+import { useState } from 'react'; //Hooks
 import { Routes, Route } from 'react-router';
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
 
   
 const filteredList = hpList
-.filter(item => item.name.toLowerCase().includes(searchName.toLowerCase()) || item.alternate_names.length > 0 && item.alternate_names[0].toLowerCase().includes(searchName.toLowerCase())
-)
+.filter(item => item.name.toLowerCase().includes(searchName.toLowerCase()) || item.alternate_names.length > 0 && item.alternate_names[0].toLowerCase().includes(searchName.toLowerCase())) // filtra tanto por nombre como por el primer alternate_names porque quería que el título del personaje fuese el nombre alternativo (si existía) pero que pueda buscar por ambos (es decir, puedes buscar Hermy o Hermione)
+
 .filter(item => item.house === searchHouse || searchHouse === "")
 
 .filter(item => {
@@ -26,13 +26,16 @@ const filteredList = hpList
   if (searchRole === "") return true;
 } );
 
-const houses = [... new Set(hpList.flatMap(item => item.house ? item.house : []))];
+const houses = [...new Set(hpList
+  .map(item=> item.house)
+  .filter(house=>house)
+)];
 
 
   return(
     <>
       <Head />
-      
+
 
       <Routes>
         <Route path="/" index element={ 
@@ -46,7 +49,7 @@ const houses = [... new Set(hpList.flatMap(item => item.house ? item.house : [])
           <Card /> 
       }/>
 
-        <Route path="*" element={ <h1>Ruta no encontrada</h1> }/>
+        <Route path="*" element={  <img className="img--404" src="src/images/not-found.png" /> }/>
       </Routes>
 
     </>

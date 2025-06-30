@@ -12,7 +12,7 @@ function Gallery ({hpList, searchName}){
                 <Link to={"/detail/" + item.id} key={item.id}>
                     <ItemGallery item={item}/>
                 </Link>
-           ) : 'Noy hay personajes que coincidan con la búsqueda "' +  searchName + '".' }
+           ) : 'There are no characters that match the search "' +  searchName + '".' }
             
         </ul>
     ); 
