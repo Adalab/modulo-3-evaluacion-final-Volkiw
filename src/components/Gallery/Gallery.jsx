@@ -1,5 +1,7 @@
 import '../../styles/Gallery.scss'
 import ItemGallery from './ItemGallery';
+import NotFound from './NotFound';
+
 import {Link} from 'react-router';
 
 
@@ -12,7 +14,7 @@ function Gallery ({hpList, searchName}){
                 <Link to={"/detail/" + item.id} key={item.id}>
                     <ItemGallery item={item}/>
                 </Link>
-           ) : 'There are no characters that match the search "' +  searchName + '".' }
+           ) : <NotFound searchName={searchName} /> }
             
         </ul>
     ); 
