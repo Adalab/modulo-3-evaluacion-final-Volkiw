@@ -7,6 +7,8 @@ import Gallery from './components/Gallery/Gallery';
 import Card from './components/Gallery/Card';
 import { useState } from 'react'; //Hooks
 import { Routes, Route } from 'react-router';
+import notFound from './images/not-found.png';
+
 
 function App() {
   const [searchName, setSearchName] = useState("");
@@ -49,7 +51,7 @@ const houses = [...new Set(hpList
           <Card /> 
       }/>
 
-        <Route path="*" element={  <img className="img--404" src="src/images/not-found.png" /> }/>
+        <Route path="*" element={  <img className="img--404" src={notFound} /> }/>
       </Routes>
 
     </>

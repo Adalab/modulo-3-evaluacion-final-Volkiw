@@ -2,6 +2,14 @@ import useCharacters from '../../hooks/useCharacters';
 import '../../styles/Gallery.scss';
 import { useParams } from "react-router";
 import {Link} from 'react-router';
+import gryffindor from '../../images/griffindor.png';
+import slytherin from '../../images/slytherin.png';
+import ravenclaw from '../../images/ravenclaw.png';
+import hufflepuff from '../../images/hufflepuff.png';
+import noHouse from '../../images/nohouse.png';
+import noImage from '../../images/no-image.jpg';
+import notFound from '../../images/not-found.png';
+
 
 
 function Card (){
@@ -16,7 +24,7 @@ function Card (){
     
     const character = list.find(item => item.id === id);
     
-    if (!character) return <div> <Link to="/" className="card-link"> back <span className="card-link__span">🧹</span></Link><p>Character not found, check that the URL is correct.</p> <img className="img--404" src="src/images/not-found.png" /></div>;
+    if (!character) return <div> <Link to="/" className="card-link"> back <span className="card-link__span">🧹</span></Link><p>Character not found, check that the URL is correct.</p> <img className="img--404" src={notFound} /></div>;
 
 
     // para poder navegar por las tarjetas de personajes sin tener que volver a la galería: 
@@ -45,10 +53,10 @@ function Card (){
      <>
          <Link to="/" className="card-link"> back <span className="card-link__span">🧹</span></Link>
         <div className="card">
-                <img className="card__image" src={ character.image ? character.image : "src/images/no-image.jpg"} />
+                <img className="card__image" src={ character.image ? character.image : noImage} />
 
                 <div className="card__left-column">
-                    <img className="card__house" src={ character.house === "Gryffindor" ? "src/images/griffindor.png" : character.house === "Slytherin" ? "src/images/slytherin.png" : character.house === "Hufflepuff" ? "src/images/hufflepuff.png" : character.house === "Ravenclaw" ? "src/images/ravenclaw.png" : "src/images/nohouse.png"} />
+                    <img className="card__house" src={ character.house === "Gryffindor" ? gryffindor : character.house === "Slytherin" ? slytherin : character.house === "Hufflepuff" ? hufflepuff : character.house === "Ravenclaw" ? ravenclaw : noHouse} />
                     <div className="card__info">
                         <h4 className="card__title">{character.name}</h4>
                         <p className="card__info--01">{character.species}{character.wizard ? " wizard" : null}{character.hogwartsStudent ? ", Hogwarts student" : null}{character.hogwartsStaff ? ", Hogwarts staff" : null} </p>
